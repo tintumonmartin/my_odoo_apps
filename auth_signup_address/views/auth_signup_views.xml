@@ -1,0 +1,52 @@
+<odoo>
+    <template id="signup_layout_replace" inherit_id="auth_signup.fields" name="sign up layout">
+        <xpath expr="." position="inside">
+            <div t-if="not token" class="form-group">
+                <label for="phone" class="control-label">Phone</label>
+                <input type="text" name="phone" id="label" class="form-control" autocapitalize="on"
+                       placeholder="Phone number" required="required"/>
+            </div>
+            <div t-if="not token" class="form-group">
+                <label for="street" class="control-label">Address</label>
+                <input type="text" name="street" id="label" class="form-control" autocapitalize="on"
+                       placeholder="Address line 1" required="required"/>
+            </div>
+            <div t-if="not token" class="form-group">
+                <input type="text" name="street2" id="label" class="form-control" autocapitalize="on"
+                       placeholder="Address line 2" required="required"/>
+            </div>
+            <div t-if="not token" class="form-group">
+                <input type="text" name="city" id="label" class="form-control" autocapitalize="on"
+                       placeholder="City" required="required"/>
+            </div>
+            <div t-if="not token" class="form-group">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <select name="state_id" id="state_id" class="form-control">
+                            <option value="">State...</option>
+                            <t t-foreach="states or []" t-as="state">
+                                <option t-att-value="state.id">
+                                    <t t-esc="state.name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="col-xs-6">
+                        <select name="country_id" id="country_id" class="form-control">
+                            <option value="">Country...</option>
+                            <t t-foreach="countries or []" t-as="country">
+                                <option t-att-value="country.id">
+                                    <t t-esc="country.name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div t-if="not token" class="form-group">
+                <input type="text" name="zip" id="label" class="form-control" placeholder="Zipcode"
+                       required="required"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>
