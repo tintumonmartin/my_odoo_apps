@@ -6,6 +6,7 @@ class ResConfigSettings(models.TransientModel):
 
     auth_signup_with_phone = fields.Boolean(string='Phone', default=True)
     auth_signup_with_address = fields.Boolean(string='Address', default=True)
+    auth_signup_with_date_of_birth = fields.Boolean(string='Date of Birth', default=True)
 
     @api.model
     def get_values(self):
@@ -14,6 +15,7 @@ class ResConfigSettings(models.TransientModel):
         res.update(
             auth_signup_with_address=get_param('auth_signup_with_address', 'False').lower() == 'true',
             auth_signup_with_phone=get_param('auth_signup_with_phone', 'False').lower() == 'true',
+            auth_signup_with_date_of_birth=get_param('auth_signup_with_date_of_birth', 'False').lower() == 'true',
         )
         return res
 
@@ -23,3 +25,4 @@ class ResConfigSettings(models.TransientModel):
         set_param = self.env['ir.config_parameter'].sudo().set_param
         set_param('auth_signup_with_phone', repr(self.auth_signup_with_phone))
         set_param('auth_signup_with_address', repr(self.auth_signup_with_address))
+        set_param('auth_signup_with_date_of_birth', repr(self.auth_signup_with_date_of_birth))

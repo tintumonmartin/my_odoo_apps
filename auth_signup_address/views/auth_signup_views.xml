@@ -6,6 +6,12 @@
                 <input type="text" name="phone" id="label" class="form-control" autocapitalize="on"
                        placeholder="Phone number" required="required"/>
             </div>
+            <div t-if="auth_signup_with_date_of_birth" id="auth_signup_with_date_of_birth_view">
+                <div t-if="not token" class="form-group">
+                    <label for="date_of_birth" class="control-label">Date of Birth</label>
+                    <input type="date" name="date_of_birth" id="label" class="form-control" required="required"/>
+                </div>
+            </div>
             <div t-if="auth_signup_with_address" id="auth_signup_with_address_view">
                 <!-- auth_signup_with_address-->
                 <div t-if="not token" class="form-group">
