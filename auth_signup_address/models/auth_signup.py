@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from odoo import _
 from odoo.exceptions import UserError
 from openerp.addons.auth_signup.controllers.main import AuthSignupHome
@@ -13,14 +15,17 @@ class AuthSignupHomeExt(AuthSignupHome):
             qcontext['auth_signup_with_phone'] = True
         if get_param('auth_signup_with_address') == 'True':
             qcontext['auth_signup_with_address'] = True
+        if get_param('auth_signup_with_date_of_birth') == 'True':
+            qcontext['auth_signup_with_date_of_birth'] = True
         qcontext['states'] = request.env["res.country.state"].sudo().search([])
         qcontext['countries'] = request.env["res.country"].sudo().search([])
         return qcontext
 
     def do_signup(self, qcontext):
         """ Replaced the default do_signup base module to add extra fields. """
-        values = {key: qcontext.get(key) for key in ('login', 'name', 'password', 'phone', 'street', 'street2',
-                                                     'city', 'state_id', 'country_id', 'zip')}
+        values = {key: qcontext.get(key) for key in ('login', 'name', 'password', 'phone', 'date_of_birth',
+                                                     'street', 'street2', 'city', 'state_id', 'country_id',
+                                                     'zip')}
         if not values:
             raise UserError(_("The form was not properly filled in."))
         if values.get('password') != qcontext.get('confirm_password'):
@@ -28,5 +33,7 @@ class AuthSignupHomeExt(AuthSignupHome):
         supported_langs = [lang['code'] for lang in request.env['res.lang'].sudo().search_read([], ['code'])]
         if request.lang in supported_langs:
             values['lang'] = request.lang
+        if values.get('date_of_birth'):
+            values['date_of_birth'] = datetime.strptime(values.get('date_of_birth'), '%Y-%m-%d')
         self._signup_with_values(qcontext.get('token'), values)
         request.env.cr.commit()
