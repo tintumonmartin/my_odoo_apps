@@ -8,16 +8,19 @@ class AuthSignupHomeExt(AuthSignupHome):
 
     def get_auth_signup_qcontext(self):
         qcontext = super(AuthSignupHomeExt, self).get_auth_signup_qcontext()
+        get_param = request.env['ir.config_parameter'].sudo().get_param
+        if get_param('auth_signup_with_phone') == 'True':
+            qcontext['auth_signup_with_phone'] = True
+        if get_param('auth_signup_with_address') == 'True':
+            qcontext['auth_signup_with_address'] = True
         qcontext['states'] = request.env["res.country.state"].sudo().search([])
         qcontext['countries'] = request.env["res.country"].sudo().search([])
         return qcontext
 
     def do_signup(self, qcontext):
         """ Replaced the default do_signup base module to add extra fields. """
-        values = {key: qcontext.get(key) for key in ('login', 'name', 'password',
-                                                     'phone', 'street', 'street2',
-                                                     'city', 'state_id', 'country_id',
-                                                     'zip')}
+        values = {key: qcontext.get(key) for key in ('login', 'name', 'password', 'phone', 'street', 'street2',
+                                                     'city', 'state_id', 'country_id', 'zip')}
         if not values:
             raise UserError(_("The form was not properly filled in."))
         if values.get('password') != qcontext.get('confirm_password'):
