@@ -1,0 +1,58 @@
+* {box-sizing: border-box;}
+
+.input-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.icon {
+  padding: 10px;
+  background: #4f8ef5;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
+
+.input-field:focus {
+  border: 2px solid #8cc0f3;
+}
+
+.btn {
+  background-color: #4976d3;
+  color: white;
+  border: none;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 5%;
+  border-radius: 50%;
+}
+
+.captcha{
+  text-align: center;
+  background-color: #ccc;
+  font-size: 20px;
+  letter-spacing: 10px;
+  font-weight: 500;
+  font-style: italic;
+  text-decoration-line: line-through;
+  font-family: "Times New Roman", Times, serif;
+}

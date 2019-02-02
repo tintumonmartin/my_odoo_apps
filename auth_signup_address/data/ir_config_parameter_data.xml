@@ -20,4 +20,14 @@
         <field name="key">auth_signup_with_image</field>
         <field name="value">True</field>
     </record>
+    <!-- Image -->
+    <record id="icp_auth_signup_with_captcha" model="ir.config_parameter">
+        <field name="key">auth_signup_with_captcha</field>
+        <field name="value">True</field>
+    </record>
+    <!-- Image -->
+    <record id="icp_auth_login_with_captcha" model="ir.config_parameter">
+        <field name="key">auth_login_with_captcha</field>
+        <field name="value">True</field>
+    </record>
 </odoo>

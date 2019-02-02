@@ -1,8 +1,10 @@
+import ast
 from datetime import datetime
 
-from odoo import _
+from odoo import http, _
+# from openerp.addons.auth_signup.controllers.main import AuthSignupHome
+from odoo.addons.auth_signup.controllers.main import AuthSignupHome
 from odoo.exceptions import UserError
-from openerp.addons.auth_signup.controllers.main import AuthSignupHome
 from openerp.http import request
 
 
@@ -17,6 +19,8 @@ class AuthSignupHomeExt(AuthSignupHome):
             qcontext['auth_signup_with_address'] = True
         if get_param('auth_signup_with_date_of_birth') == 'True':
             qcontext['auth_signup_with_date_of_birth'] = True
+        if get_param('auth_signup_with_captcha') == 'True':
+            qcontext['auth_signup_with_captcha'] = True
         qcontext['states'] = request.env["res.country.state"].sudo().search([])
         qcontext['countries'] = request.env["res.country"].sudo().search([])
         return qcontext
@@ -37,3 +41,20 @@ class AuthSignupHomeExt(AuthSignupHome):
             values['date_of_birth'] = datetime.strptime(values.get('date_of_birth'), '%Y-%m-%d')
         self._signup_with_values(qcontext.get('token'), values)
         request.env.cr.commit()
+
+
+def set_captcha():
+    param_obj = request.env['ir.config_parameter'].sudo()
+    print(param_obj.get_param('auth_login_with_captcha'))
+    if param_obj.get_param('auth_login_with_captcha') == 'True':
+        request.params['auth_login_with_captcha'] = True
+    else:
+        request.params['auth_login_with_captcha'] = False
+
+
+class RenoLogin(AuthSignupHome):
+
+    @http.route('/web/login', type='http', auth="none")
+    def web_login(self, redirect=None, **kw):
+        set_captcha()
+        return super(RenoLogin, self).web_login(redirect, **kw)
