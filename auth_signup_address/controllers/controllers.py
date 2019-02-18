@@ -1,8 +1,6 @@
-import ast
 from datetime import datetime
 
 from odoo import http, _
-# from openerp.addons.auth_signup.controllers.main import AuthSignupHome
 from odoo.addons.auth_signup.controllers.main import AuthSignupHome
 from odoo.exceptions import UserError
 from openerp.http import request
@@ -53,7 +51,6 @@ def set_captcha():
 
 
 class RenoLogin(AuthSignupHome):
-
     @http.route('/web/login', type='http', auth="none")
     def web_login(self, redirect=None, **kw):
         set_captcha()
