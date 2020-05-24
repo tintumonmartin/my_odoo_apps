@@ -25,17 +25,6 @@
   border: 2px solid #8cc0f3;
 }
 
-#signupButton.btn {
-  background-color: #4976d3;
-  color: white;
-  border: none;
-  margin-top: 3px;
-  margin-bottom: 3px;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-
 .imgcontainer {
   text-align: center;
   margin: 24px 0 12px 0;
@@ -46,12 +35,10 @@ img.avatar {
   border-radius: 50%;
 }
 
-.captcha{
+.captcha {
   text-align: center;
   background-color: #ccc;
-  font-size: 20px;
   letter-spacing: 10px;
-  font-weight: 500;
   font-style: italic;
   text-decoration-line: line-through;
   font-family: "Times New Roman", Times, serif;
