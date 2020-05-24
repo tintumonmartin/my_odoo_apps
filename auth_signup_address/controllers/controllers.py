@@ -40,18 +40,10 @@ class AuthSignupHomeExt(AuthSignupHome):
         self._signup_with_values(qcontext.get('token'), values)
         request.env.cr.commit()
 
-
-def set_captcha():
-    param_obj = request.env['ir.config_parameter'].sudo()
-    print(param_obj.get_param('auth_login_with_captcha'))
-    if param_obj.get_param('auth_login_with_captcha') == 'True':
-        request.params['auth_login_with_captcha'] = True
-    else:
-        request.params['auth_login_with_captcha'] = False
-
-
-class RenoLogin(AuthSignupHome):
     @http.route('/web/login', type='http', auth="none")
     def web_login(self, redirect=None, **kw):
-        set_captcha()
-        return super(RenoLogin, self).web_login(redirect, **kw)
+        param_obj = request.env['ir.config_parameter'].sudo()
+        request.params['auth_login_with_captcha'] = False
+        if param_obj.get_param('auth_login_with_captcha') == 'True':
+            request.params['auth_login_with_captcha'] = True
+        return super(AuthSignupHomeExt, self).web_login(redirect, **kw)

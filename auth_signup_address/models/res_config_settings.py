@@ -8,8 +8,8 @@ class ResConfigSettings(models.TransientModel):
     auth_signup_with_address = fields.Boolean(string='Address', default=True)
     auth_signup_with_date_of_birth = fields.Boolean(string='Date of Birth', default=True)
     auth_signup_with_image = fields.Boolean(string='Image', default=True)
-    auth_signup_with_captcha = fields.Boolean(string='Captcha', default=True)
-    auth_login_with_captcha = fields.Boolean(string='Captcha', default=True)
+    auth_signup_with_captcha = fields.Boolean(string='Signup Captcha', default=True)
+    auth_login_with_captcha = fields.Boolean(string='Login Captcha', default=True)
 
     @api.model
     def get_values(self):
@@ -25,7 +25,6 @@ class ResConfigSettings(models.TransientModel):
         )
         return res
 
-    @api.multi
     def set_values(self):
         super(ResConfigSettings, self).set_values()
         set_param = self.env['ir.config_parameter'].sudo().set_param
