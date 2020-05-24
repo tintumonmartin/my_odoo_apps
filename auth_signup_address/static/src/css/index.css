@@ -25,7 +25,7 @@
   border: 2px solid #8cc0f3;
 }
 
-.btn {
+#signupButton.btn {
   background-color: #4976d3;
   color: white;
   border: none;
