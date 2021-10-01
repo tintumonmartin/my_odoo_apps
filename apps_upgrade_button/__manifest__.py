@@ -4,8 +4,8 @@
     'category': 'Extra Tools',
     'sequence': 6,
     'summary': 'Upgrade/Uninstall installed module in Kanban view without going in form view',
-    'author': 'Tintumon .M',
-    'website': 'http://www.tintumon.co.in',
+    'author': 'Tintumon',
+    'website': 'https://tintumon.co.in',
     'license': 'AGPL-3',
     'depends': [
         'base',
