@@ -7,12 +7,13 @@
         Used to Restrict Module Uninstall using password.
         Prevent Apps from Being Uninstalled by Someone.
     """,
-    'author': "Tintumon M",
-    'website': "https://www.tintumon.co.in",
+    'author': "Tintumon",
+    'website': "https://tintumon.co.in",
     'category': 'Uncategorized',
     'version': '0.1',
     'depends': ['base'],
     'data': [
         'wizard/base_module_uninstall_views.xml',
     ],
+    'images': ['static/description/uninstall_wizard.png'],
 }
