@@ -2,9 +2,10 @@
 {
     'name': "Restrict Module Uninstall",
     'summary': """
-        Used to Restrict Module Uninstall using password""",
+        Used to Restrict Module Uninstall using password.""",
     'description': """
-        Long description of module's purpose
+        Used to Restrict Module Uninstall using password.
+        Prevent Apps from Being Uninstalled by Someone.
     """,
     'author': "Tintumon M",
     'website': "https://www.tintumon.co.in",
