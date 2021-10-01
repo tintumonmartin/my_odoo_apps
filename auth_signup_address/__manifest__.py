@@ -2,9 +2,6 @@
 {
     'name': 'Signup page with Optional fields such as Address, Phone, Date of Birth & Captcha',
     'summary': 'Signup page with Optional extra fields such as Address, Phone, Date of Birth & Captcha.',
-    'description': """
-    Signup page with Optional extra fields such as Address, Phone, Date of Birth & Captcha.
-    """,
     'author': 'Tintumon .M',
     'website': 'http://www.tintumon.co.in',
     'license': 'AGPL-3',
@@ -12,6 +9,7 @@
     'version': '0.1',
     'images': ['static/description/banner.jpg'],
     'depends': [
+        'base',
         'auth_signup',
     ],
     'data': [

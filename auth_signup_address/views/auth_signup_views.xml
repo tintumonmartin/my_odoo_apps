@@ -30,7 +30,7 @@
             <link rel="stylesheet" href="/auth_signup_address/static/src/css/index.css"/>
             <div t-if="auth_signup_with_phone" class="form-group" id="auth_signup_with_phone_view">
                 <label for="phone" class="control-label">Phone</label>
-                <input type="tel" name="phone" id="phone" class="form-control" autocapitalize="on"
+                <input type="text" name="phone" id="phone" class="form-control" autocapitalize="on"
                        placeholder="Phone number" required="required"/>
             </div>
             <div t-if="auth_signup_with_date_of_birth" id="auth_signup_with_date_of_birth_view">
