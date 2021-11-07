@@ -12,6 +12,8 @@ class BaseModuleUninstall(models.TransientModel):
     password = fields.Char(required=True)
 
     def action_uninstall(self):
-        if self.password != tools.config['uninstall_password'].replace('\'', ''):
-            raise ValidationError("Invalid Password")
+        if not tools.config.get('uninstall_password'):
+            raise ValidationError("Uninstall password not yet set!")
+        if self.password != tools.config.get('uninstall_password').replace('\'', ''):
+            raise ValidationError("Invalid Password!")
         return super(BaseModuleUninstall, self).action_uninstall()
