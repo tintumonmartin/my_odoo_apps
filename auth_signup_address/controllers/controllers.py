@@ -33,7 +33,7 @@ class AuthSignupHomeExt(AuthSignupHome):
         if values.get('password') != qcontext.get('confirm_password'):
             raise UserError(_("Passwords do not match; please retype them."))
         supported_langs = [lang['code'] for lang in request.env['res.lang'].sudo().search_read([], ['code'])]
-        if request.lang.code in supported_langs:
+        if request.lang in supported_langs:
             values['lang'] = request.lang
         if values.get('date_of_birth'):
             values['date_of_birth'] = datetime.strptime(values.get('date_of_birth'), '%Y-%m-%d')
