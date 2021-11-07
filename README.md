@@ -1,11 +1,15 @@
 # my_odoo_apps
+
 Apps Uploaded in Odoo App Store
 
 # Odoo addons
-App Upgrade button in kanban view -  Technical Name : app_upgrade_button
- * Enables Upgrade/Uninstall Button in App Kanban view.
+
+App Upgrade button in kanban view - Technical Name : app_upgrade_button
+
+* Enables Upgrade/Uninstall Button in App Kanban view.
 
 # auth_signup_address
+
 Odoo Module - Web Signup page with Optional extra fields such as Address, Phone, Date of Birth & Captcha.
 
             * New Customer can give complete address with phone number while signup.
@@ -15,6 +19,7 @@ Odoo Module - Web Signup page with Optional extra fields such as Address, Phone,
             Default will be true.
             * Enable/Disable Captcha in both Signup and Login page.
             * Upload profile picture while sign up(Upcoming feature).
+
 <hr/>
     <div class="oe_row">
         <h3>Get Help &amp; Support</h3>

@@ -1,22 +1,20 @@
 <?xml version="1.0"?>
 <openerp>
-    <data>
-        <record id="custom_upgrade_btn" model="ir.ui.view">
-            <field name="name">Apps Kanban</field>
-            <field name="model">ir.module.module</field>
-            <field name="inherit_id" ref="base.module_view_kanban"/>
-            <field name="arch" type="xml">
-                <data>
-                    <xpath expr="//div[@class='oe_module_action']" position="before">
-                        <button type="object" class="btn btn-info pull-left btn-sm"
-                                name="button_immediate_upgrade" states="installed" string="Upgrade">Upgrade
-                        </button>
-                        <button type="object" class="btn btn-danger btn-sm"
-                                name="button_uninstall_wizard" states="installed" string="Uninstall">Uninstall
-                        </button>
-                    </xpath>
-                </data>
-            </field>
-        </record>
-    </data>
+    <record id="custom_upgrade_btn" model="ir.ui.view">
+        <field name="name">Apps Kanban</field>
+        <field name="model">ir.module.module</field>
+        <field name="inherit_id" ref="base.module_view_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@t-if='installed']" position="replace"/>
+            <xpath expr="//div[@class='oe_module_action']" position="inside">
+                <button type="object" class="btn btn-warning pull-left btn-sm fa fa-upload"
+                        name="button_immediate_upgrade" states="installed" string="Upgrade">Upgrade
+                </button>
+                <button type="object" class="btn btn-danger btn-sm fa fa-trash"
+                        name="button_uninstall_wizard" states="installed" string="Uninstall">Uninstall
+                </button>
+                <button type="edit" class="btn btn-info btn-sm fa fa-info-circle"/>
+            </xpath>
+        </field>
+    </record>
 </openerp>
