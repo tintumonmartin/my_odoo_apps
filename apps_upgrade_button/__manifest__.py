@@ -15,4 +15,5 @@
         'views/upgrade_button_views.xml',
     ],
     'installable': True,
+    'images': ['static/description/banner.png'],
 }
