@@ -3,7 +3,7 @@ from datetime import datetime
 from odoo import http, _
 from odoo.addons.auth_signup.controllers.main import AuthSignupHome
 from odoo.exceptions import UserError
-from openerp.http import request
+from odoo.http import request
 
 
 class AuthSignupHomeExt(AuthSignupHome):
@@ -32,9 +32,10 @@ class AuthSignupHomeExt(AuthSignupHome):
             raise UserError(_("The form was not properly filled in."))
         if values.get('password') != qcontext.get('confirm_password'):
             raise UserError(_("Passwords do not match; please retype them."))
-        supported_langs = [lang['code'] for lang in request.env['res.lang'].sudo().search_read([], ['code'])]
-        if request.lang in supported_langs:
-            values['lang'] = request.lang
+        supported_lang_codes = [code for code, _ in request.env['res.lang'].get_installed()]
+        lang = request.context.get('lang', '')
+        if lang in supported_lang_codes:
+            values['lang'] = lang
         if values.get('date_of_birth'):
             values['date_of_birth'] = datetime.strptime(values.get('date_of_birth'), '%Y-%m-%d')
         self._signup_with_values(qcontext.get('token'), values)
